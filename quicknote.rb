@@ -42,7 +42,7 @@ end
 post '/quicknote' do
   content = params[:content]
   notes = get_notes(FILE_PATH)
-  id = (notes.keys.map(&:to_i).max + 1).to_s
+  id = notes.empty? ? '1' : (notes.keys.map(&:to_i).max + 1).to_s
   notes[id] = { 'content' => content }
   set_notes(FILE_PATH, notes)
 
