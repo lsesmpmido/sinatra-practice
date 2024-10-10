@@ -71,3 +71,8 @@ delete '/quicknote/:id' do
 
   redirect '/quicknote'
 end
+
+not_found do
+  status 404
+  erb :not_found
+end
