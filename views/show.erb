@@ -1,0 +1,19 @@
+<div class="menu-bar">
+  <form action="/quicknote/<%= params[:id] %>/edit" method="get">
+    <input type="submit" value="編集" class="btn btn-primary">
+  </form>
+  <form action="/quicknote/<%= params[:id] %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="削除" class="btn btn-secondary">
+  </form>
+  <button type="button" onclick="location.href='/quicknote'" class="btn btn-secondary">メモ一覧に戻る</button>
+</div>
+
+<div class="sticky-note full">
+  <div class="title">
+    <%= @title %>
+  </div>
+  <div class="content">
+    <%= Rack::Utils.escape_html(@content).gsub("\n", "<br>") %>
+  </div>
+</div>

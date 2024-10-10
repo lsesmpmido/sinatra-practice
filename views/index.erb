@@ -1,0 +1,11 @@
+<div class="sticky-notes-container">
+  <a href="/quicknote/new" class="new-btn sticky-note compact">
+    <img class="fit-picture" src="/create_new_note.png" alt="create new note" width=60px height=60px>
+  </a>
+  <% @notes.each do |id, post| %>
+    <a href="/quicknote/<%= id %>" class="sticky-note compact">
+      <div class="title"><%= post["content"].split().shift %></div>
+      <div class="short content"><%= post["content"].split().drop(1).join("\r\n") %></div>
+    </a>
+  <% end %>
+</div>
