@@ -31,21 +31,7 @@ git clone -b develop https://github.com/lsesmpmido/sinatra-practice.git
 cd sinatra-practice
 ```
 
-3. Bundlerを初期化
-```bash
-bundle init
-```
-
-4. 初期化後に作成されるGemfileに以下の内容を記入
-```gemfile
-# frozen_string_literal: true
-
-source "https://rubygems.org"
-
-gem "sinatra"
-gem "sinatra-contrib"
-```
-5. Gemfileの内容を保存し、以下の操作で必要なGemをインストール
+3. リポジトリ内のGemfileを使用して以下の操作で必要なGemをインストール
 ```bash
 bundle install
 ```
