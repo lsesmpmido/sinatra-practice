@@ -33,10 +33,15 @@ end
 
 get '/quicknote/:id' do
   notes = get_notes(FILE_PATH)
-  text = notes[params[:id]]['content'].split
-  @title = to_escape(text.shift)
-  @content = to_escape(text.join("\r\n"))
-  erb :show
+  content = notes[params[:id]]
+  if content
+    text = content['content'].split
+    @title = to_escape(text.shift)
+    @content = to_escape(text.join("\r\n"))
+    erb :show
+  else
+    erb :not_found
+  end
 end
 
 post '/quicknote' do
