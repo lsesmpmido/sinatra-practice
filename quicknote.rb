@@ -15,7 +15,7 @@ def get_notes(file_path)
 end
 
 def set_notes(file_path, notes)
-  File.write(file_path, JSON.pretty_generate(notes))
+  File.write(file_path, JSON.dump(notes))
 end
 
 get '/' do
