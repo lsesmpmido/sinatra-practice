@@ -4,7 +4,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'json'
 
-FILE_PATH = 'public/quicknote_db.json'
+FILE_PATH = 'data/quicknote.json'
 
 def generate_escape_character(text)
   Rack::Utils.escape_html(text)
