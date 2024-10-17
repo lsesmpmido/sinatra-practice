@@ -126,7 +126,6 @@ PLATFORMS
 DEPENDENCIES
   erb_lint
   rexml
-  rubocop
   rubocop-fjord
   sinatra
   sinatra-contrib
