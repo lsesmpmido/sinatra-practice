@@ -19,19 +19,19 @@ def save_notes(file_path, notes)
 end
 
 get '/' do
-  redirect '/quicknote'
+  redirect '/notes'
 end
 
-get '/quicknote' do
+get '/notes' do
   @notes = load_notes(FILE_PATH)
   erb :index
 end
 
-get '/quicknote/new' do
+get '/notes/new' do
   erb :new
 end
 
-get '/quicknote/:id' do
+get '/notes/:id' do
   notes = load_notes(FILE_PATH)
   content = notes[params[:id]]
   if content
@@ -43,7 +43,7 @@ get '/quicknote/:id' do
   end
 end
 
-post '/quicknote' do
+post '/notes' do
   title = generate_escape_character(params[:title])
   content = generate_escape_character(params[:content])
   if title && content
@@ -51,13 +51,13 @@ post '/quicknote' do
     id = notes.empty? ? '1' : (notes.keys.map(&:to_i).max + 1).to_s
     notes[id] = { 'title' => title, 'content' => content }
     save_notes(FILE_PATH, notes)
-    redirect '/quicknote'
+    redirect '/notes'
   else
     erb :not_found
   end
 end
 
-get '/quicknote/:id/edit' do
+get '/notes/:id/edit' do
   notes = load_notes(FILE_PATH)
   content = notes[params[:id]]
   if content
@@ -69,25 +69,25 @@ get '/quicknote/:id/edit' do
   end
 end
 
-patch '/quicknote/:id' do
+patch '/notes/:id' do
   title = generate_escape_character(params[:title])
   content = generate_escape_character(params[:content])
   if title && content
     notes = load_notes(FILE_PATH)
     notes[params[:id]] = { 'title' => title, 'content' => content }
     save_notes(FILE_PATH, notes)
-    redirect "/quicknote/#{params[:id]}"
+    redirect "/notes/#{params[:id]}"
   else
     erb :not_found
   end
 end
 
-delete '/quicknote/:id' do
+delete '/notes/:id' do
   notes = load_notes(FILE_PATH)
   notes.delete(params[:id])
   save_notes(FILE_PATH, notes)
 
-  redirect '/quicknote'
+  redirect '/notes'
 end
 
 not_found do

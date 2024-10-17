@@ -1,9 +1,9 @@
 <div class="sticky-notes-container">
-  <a href="/quicknote/new" class="new-btn sticky-note compact">
+  <a href="/notes/new" class="new-btn sticky-note compact">
     <img class="fit-picture" src="/create_new_note.png" alt="create new note" width=60px height=60px>
   </a>
   <% @notes.each do |id, post| %>
-    <a href="/quicknote/<%= id %>" class="sticky-note compact">
+    <a href="/notes/<%= id %>" class="sticky-note compact">
       <div class="short title"><%= post["title"] %></div>
       <div class="short content"><%= post["content"] %></div>
     </a>
