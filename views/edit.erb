@@ -5,7 +5,7 @@
     <button type="button" onclick="location.href='/quicknote/<%= params[:id] %>'" class="btn btn-secondary">キャンセル</button>
   </div>
   <div class="sticky-note full">
-    <textarea name="content" class="form-control"><%= @content %></textarea>
+    <input type="text" name="title" value="<%= @title %>" class="form-control form-title">
+    <textarea name="content" class="form-control form-content"><%= @content %></textarea>
   </div>
 </form>
-</div>

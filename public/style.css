@@ -28,7 +28,6 @@
   text-decoration: none;
   color: black;
   transition: transform 0.2s;
-  overflow: hidden;
 }
 
 .sticky-notes-container {
@@ -93,12 +92,21 @@
 
 .form-control {
   width: 95%; /* 幅を100%に */
-  height: 360px;
   padding: 10px; /* パディング */
   border: none; /* 枠線をなしに */
-  font-size: 17px; /* フォントサイズ */
   background-color: #fffbcc; /* テキストエリアの背景色 */
   resize: none; /* サイズ変更を無効にする */
+}
+
+.form-title{
+  height: 30px;
+  font-size: 20px; /* フォントサイズ */
+  font-weight: bold;
+}
+
+.form-content{
+  height: 360px;
+  font-size: 17px; /* フォントサイズ */
 }
 
 .form-control:focus {
