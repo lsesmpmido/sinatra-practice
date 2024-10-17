@@ -6,7 +6,7 @@ require 'json'
 
 FILE_PATH = 'public/quicknote_db.json'
 
-def to_escape(text)
+def generate_escape_character(text)
   Rack::Utils.escape_html(text)
 end
 
@@ -36,8 +36,8 @@ get '/quicknote/:id' do
   content = notes[params[:id]]
   if content
     text = content['content'].split
-    @title = to_escape(text.shift)
-    @content = to_escape(text.join("\r\n"))
+    @title = generate_escape_character(text.shift)
+    @content = generate_escape_character(text.join("\r\n"))
     erb :show
   else
     erb :not_found
@@ -56,7 +56,7 @@ end
 
 get '/quicknote/:id/edit' do
   notes = get_notes(FILE_PATH)
-  @content = to_escape(notes[params[:id]]['content'])
+  @content = generate_escape_character(notes[params[:id]]['content'])
   erb :edit
 end
 
