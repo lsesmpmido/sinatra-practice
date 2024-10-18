@@ -4,9 +4,10 @@ source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem 'rexml'
+gem 'rackup'
 
 group :development do
   gem 'erb_lint', require: false
-  gem 'rexml'
   gem 'rubocop-fjord', require: false
 end
