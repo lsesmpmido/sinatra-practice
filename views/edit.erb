@@ -5,7 +5,7 @@
     <a href="/notes/<%= params[:id] %>" class="btn btn-secondary">キャンセル</a>
   </div>
   <div class="sticky-note full">
-    <input type="text" name="title" value="<%= @title %>" class="form-control form-title">
-    <textarea name="content" class="form-control form-content"><%= @content %></textarea>
+    <input type="text" name="title" value="<%= h(@title) %>" class="form-control form-title">
+    <textarea name="content" class="form-control form-content"><%= h(@content) %></textarea>
   </div>
 </form>

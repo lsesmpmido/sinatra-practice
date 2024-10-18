@@ -11,9 +11,9 @@
 
 <div class="sticky-note full">
   <div class="title">
-    <%= @title %>
+    <%= h(@title) %>
   </div>
   <div class="content">
-    <%= @content.gsub("\n", "<br>") %>
+    <%= h(@content).gsub("\n", "<br>") %>
   </div>
 </div>

@@ -4,8 +4,8 @@
   </a>
   <% @notes.each do |id, post| %>
     <a href="/notes/<%= id %>" class="sticky-note compact">
-      <div class="short title"><%= post["title"] %></div>
-      <div class="short content"><%= post["content"] %></div>
+      <div class="short title"><%= h(post["title"]) %></div>
+      <div class="short content"><%= h(post["content"]) %></div>
     </a>
   <% end %>
 </div>

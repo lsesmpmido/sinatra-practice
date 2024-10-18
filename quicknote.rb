@@ -6,8 +6,10 @@ require 'json'
 
 FILE_PATH = 'data/quicknote.json'
 
-def generate_escape_character(text)
-  Rack::Utils.escape_html(text)
+helpers do
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
 end
 
 def load_notes(file_path)
@@ -45,8 +47,8 @@ get '/notes/:id' do
 end
 
 post '/notes' do
-  title = generate_escape_character(params[:title])
-  content = generate_escape_character(params[:content])
+  title = params[:title]
+  content = params[:content]
   if title && content
     notes = load_notes(FILE_PATH)
     id = notes.empty? ? '1' : (notes.keys.map(&:to_i).max + 1).to_s
@@ -72,8 +74,8 @@ get '/notes/:id/edit' do
 end
 
 patch '/notes/:id' do
-  title = generate_escape_character(params[:title])
-  content = generate_escape_character(params[:content])
+  title = params[:title]
+  content = params[:content]
   if title && content
     notes = load_notes(FILE_PATH)
     notes[params[:id]] = { 'title' => title, 'content' => content }
