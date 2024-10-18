@@ -39,6 +39,7 @@ get '/notes/:id' do
     @content = content['content']
     erb :show
   else
+    status 404
     erb :not_found
   end
 end
