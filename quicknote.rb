@@ -69,7 +69,8 @@ get '/notes/:id/edit' do
     @content = note['content']
     erb :edit
   else
-    erb :not_found
+    status 422
+    redirect '/notes/:id'
   end
 end
 
@@ -82,7 +83,8 @@ patch '/notes/:id' do
     save_notes(FILE_PATH, notes)
     redirect "/notes/#{params[:id]}"
   else
-    erb :not_found
+    status 422
+    redirect '/notes/:id/edit'
   end
 end
 
