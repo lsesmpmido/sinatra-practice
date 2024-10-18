@@ -33,10 +33,10 @@ end
 
 get '/notes/:id' do
   notes = load_notes(FILE_PATH)
-  content = notes[params[:id]]
-  if content
-    @title = content['title']
-    @content = content['content']
+  note = notes[params[:id]]
+  if note
+    @title = note['title']
+    @content = note['content']
     erb :show
   else
     status 404
@@ -61,10 +61,10 @@ end
 
 get '/notes/:id/edit' do
   notes = load_notes(FILE_PATH)
-  content = notes[params[:id]]
-  if content
-    @title = content['title']
-    @content = content['content']
+  note = notes[params[:id]]
+  if note
+    @title = note['title']
+    @content = note['content']
     erb :edit
   else
     erb :not_found
