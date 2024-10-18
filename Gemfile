@@ -2,10 +2,10 @@
 
 source 'https://rubygems.org'
 
+gem 'rackup'
+gem 'rexml'
 gem 'sinatra'
 gem 'sinatra-contrib'
-gem 'rexml'
-gem 'rackup'
 
 group :development do
   gem 'erb_lint', require: false
