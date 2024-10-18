@@ -54,7 +54,8 @@ post '/notes' do
     save_notes(FILE_PATH, notes)
     redirect '/notes'
   else
-    erb :not_found
+    status 422
+    redirect '/new'
   end
 end
 
