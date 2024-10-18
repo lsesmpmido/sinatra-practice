@@ -66,6 +66,8 @@
   margin: 5px;
   color: white;
   border: none;
+  font-size: 14px;
+  text-decoration: none;
   transition: transform 0.2s;
 }
 
