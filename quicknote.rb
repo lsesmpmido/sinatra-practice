@@ -56,7 +56,6 @@ post '/notes' do
     save_notes(FILE_PATH, notes)
     redirect '/notes'
   else
-    status 422
     redirect '/new'
   end
 end
@@ -69,7 +68,6 @@ get '/notes/:id/edit' do
     @content = note['content']
     erb :edit
   else
-    status 422
     redirect '/notes/:id'
   end
 end
@@ -83,7 +81,6 @@ patch '/notes/:id' do
     save_notes(FILE_PATH, notes)
     redirect "/notes/#{params[:id]}"
   else
-    status 422
     redirect '/notes/:id/edit'
   end
 end
