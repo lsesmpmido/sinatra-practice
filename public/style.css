@@ -1,0 +1,116 @@
+.container{
+  padding-left: 2%;
+}
+
+.logo{
+  padding: 0px 20px;
+}
+
+.logo-link{
+  color: hsl(0, 0%, 0%);
+  text-decoration: none;
+}
+
+.menu-bar {
+  display: flex;
+  padding: 10px;
+}
+
+.sticky-note {
+  min-height: 150px;
+  margin: 10px;
+  background-color: #FFF9B1;
+  border: 1px solid #fbc02d;
+  box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.302);
+  padding: 10px;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  transition: transform 0.2s;
+}
+
+.sticky-notes-container {
+  display: flex;
+  flex-wrap: wrap; /* 折り返しを有効に */
+  justify-content: center; /* 中央揃え */
+  max-width: 1500px; /* 最大幅を設定 */
+}
+
+.compact:hover {
+  transform: translateY(-5px);
+}
+
+.short {
+  width: 150px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 5; /* 最大行数を設定 */
+}
+
+.full{
+  min-width: 400px;
+  max-width: 800px;
+  padding: 20px 20px;
+  background-color: #FFF9B1;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.btn{
+  padding: 10px;
+  margin: 5px;
+  color: white;
+  border: none;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary{
+  background-color: chocolate;
+}
+
+.btn-secondary{
+  background-color: darkgrey;
+}
+
+.new-btn{
+  width: 150px;
+  background-color: chocolate;
+  border: darkgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-control {
+  width: 95%; /* 幅を100%に */
+  padding: 10px; /* パディング */
+  border: none; /* 枠線をなしに */
+  background-color: #fffbcc; /* テキストエリアの背景色 */
+  resize: none; /* サイズ変更を無効にする */
+}
+
+.form-title{
+  height: 30px;
+  font-size: 20px; /* フォントサイズ */
+  font-weight: bold;
+}
+
+.form-content{
+  height: 360px;
+  font-size: 17px; /* フォントサイズ */
+}
+
+.form-control:focus {
+  outline: none; /* フォーカス時のアウトラインを無効にする */
+}

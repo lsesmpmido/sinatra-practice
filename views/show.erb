@@ -1,0 +1,19 @@
+<div class="menu-bar">
+  <form action="/notes/<%= params[:id] %>/edit" method="get">
+    <input type="submit" value="編集" class="btn btn-primary">
+  </form>
+  <form action="/notes/<%= params[:id] %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="削除" class="btn btn-secondary">
+  </form>
+  <a href="/notes" class="btn btn-secondary">メモ一覧に戻る</a>
+</div>
+
+<div class="sticky-note full">
+  <div class="title">
+    <%= h(@title) %>
+  </div>
+  <div class="content">
+    <%= h(@content).gsub("\n", "<br>") %>
+  </div>
+</div>
