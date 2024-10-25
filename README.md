@@ -1,8 +1,9 @@
 # QuickNote
 Sinatraによってlocalhost上で実行できるメモアプリです。メモアプリとして、メモの作成・閲覧・編集・削除などの基本的な機能を備えています。
 
+![image](https://github.com/user-attachments/assets/f629abc0-c5bd-4b7e-bb21-4219219c1185)
+
 # 目次
-- [デモ動画](#デモ動画)
 - [動作要件](#動作要件)
 - [導入方法](#導入方法)
 - [使用方法](#使用方法)
@@ -12,18 +13,18 @@ Sinatraによってlocalhost上で実行できるメモアプリです。メモ�
   - [メモの編集](#メモの編集)
   - [メモの削除](#メモの削除)
 
-# デモ動画
-![quicknote_demo](https://github.com/user-attachments/assets/bb41ed7b-8b76-4bfb-a5fc-0b7f6881ab5a)
-
 # 動作要件
 実行には、Gemで以下のファイルが必要
+* pg
+* rackup
+* rexml
 * sinatra
 * sinatra-contrib
 
 # 導入方法
 1. 以下のコマンドでリポジトリをクローンする
 ```bash
-git clone -b develop https://github.com/lsesmpmido/sinatra-practice.git
+git clone -b develop_use-postgresql https://github.com/lsesmpmido/sinatra-practice.git
 ```
 
 2. クローンしたリポジトリ内にディレクトリを移動
@@ -49,53 +50,53 @@ ruby quicknote.rb
 ## メモの新規作成
 1. [ホーム画面](http://localhost:4567/quicknote)に移動し、「＋アイコン」を選択
 
-<img src="https://github.com/user-attachments/assets/c930f4a4-ec8f-4d73-aed0-15ac50c56ff4" width="50%">
+<img src="https://github.com/user-attachments/assets/c2d0332f-54f2-4c7f-9825-015c44cde0bb" width="50%">
 
-2. 「ここにメッセージを入力」の欄にメモをしたい内容を記入する
+2. 「ここにタイトルを入力」にメモのタイトルを、「ここにメッセージを入力」の欄にメモの内容を記入する
 
-<img src="https://github.com/user-attachments/assets/1a2484fc-d277-40fd-8406-91f01b8d4408" width="50%">
+<img src="https://github.com/user-attachments/assets/8a9970fa-3e79-44fa-8183-4af2d4257a7e" width="50%">
 
 3. 「保存ボタン」を押すと、メモの内容を保存することができる
 
-<img src="https://github.com/user-attachments/assets/259edc17-1a2d-493d-b7b4-36480e84c06b" width="50%">
+<img src="https://github.com/user-attachments/assets/b89b8ea8-35aa-4912-8bfa-d8ee94dd6b8a" width="50%">
 
 
 ## メモの閲覧
 1. [ホーム画面](http://localhost:4567/quicknote)に移動し、閲覧したいメモを選択
 
-<img src="https://github.com/user-attachments/assets/a5d7bc84-772d-4a64-8087-d9b92b351baf" width="50%">
+<img src="https://github.com/user-attachments/assets/9b6a33cb-9abf-43a5-994f-f5faeb45bd9b" width="50%">
 
 2. 選択すると画像のようにメモの内容を確認することができる
 
-<img src="https://github.com/user-attachments/assets/0401ac68-e794-43e8-bb81-c917636c3c5d" width="50%">
+<img src="https://github.com/user-attachments/assets/5a686756-9db9-47d5-ba03-a0c2af9a5b8a" width="50%">
 
 
 ## メモの編集
 1. [ホーム画面](http://localhost:4567/quicknote)に移動し、編集したいメモを選択
 
-<img src="https://github.com/user-attachments/assets/a5d7bc84-772d-4a64-8087-d9b92b351baf" width="50%">
+<img src="https://github.com/user-attachments/assets/9b6a33cb-9abf-43a5-994f-f5faeb45bd9b" width="50%">
 
 2. 「編集ボタン」を選択する
 
-<img src="https://github.com/user-attachments/assets/e894faf5-f3fe-4a59-a945-9aae80cba475" width="50%">
+<img src="https://github.com/user-attachments/assets/e02fc517-eb85-4092-a0c8-98ae64c728fe" width="50%">
 
 3. テキストを選択し、メモの編集を行う
 
-<img src="https://github.com/user-attachments/assets/2e3092aa-3501-4846-8969-aecd6a7b6138" width="50%">
+<img src="https://github.com/user-attachments/assets/d2126455-2252-4aa9-9183-632f846fb58a" width="50%">
 
 4. 「保存ボタン」を押すと、編集したメモの内容を保存することができる
 
-<img src="https://github.com/user-attachments/assets/1a4904f4-6efd-43dd-a5f2-38e096f8d175" width="50%">
+<img src="https://github.com/user-attachments/assets/8d1c112b-f00e-4c71-8c38-8cfaa8d8a780" width="50%">
 
 ## メモの削除
 1. [ホーム画面](http://localhost:4567/quicknote)に移動し、削除したいメモを選択
 
-<img src="https://github.com/user-attachments/assets/a5d7bc84-772d-4a64-8087-d9b92b351baf" width="50%">
+<img src="https://github.com/user-attachments/assets/9b6a33cb-9abf-43a5-994f-f5faeb45bd9b" width="50%">
 
 2. 「削除ボタン」を選択する
 
-<img src="https://github.com/user-attachments/assets/6c834fe8-8ce6-47a2-a6b3-448815acc406" width="50%">
+<img src="https://github.com/user-attachments/assets/2c08b173-b931-49c4-9596-7244a30712b9" width="50%">
 
 3. 自動で[ホーム画面](http://localhost:4567/quicknote)に遷移し、実際に選択したメモが消えていることが確認できる
 
-<img src="https://github.com/user-attachments/assets/95458f21-f721-4567-97f8-08ad6a836ad6" width="50%">
+<img src="https://github.com/user-attachments/assets/18dfc2a0-62c1-4319-890b-ffd60ab739eb" width="50%">
