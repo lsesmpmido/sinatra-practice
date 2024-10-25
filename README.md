@@ -37,6 +37,52 @@ cd sinatra-practice
 bundle install
 ```
 
+# 環境構築
+
+## DBの作成
+1. psqlにログインする
+```bash
+sudo -u postgres psql
+```
+2. 以下のSQL文でデータベースを新規作成する
+```sql
+CREATE DATABASE newdb;
+```
+3. データベースに対するすべての権限を付与
+```sql
+GRANT ALL PRIVILEGES ON DATABASE newdb TO your_user;
+```
+4. 作成したデータベース内に入る
+```sql
+\c newdb;
+```
+5. 以下のSQL文でテーブルを新規作成する
+```sql
+CREATE TABLE [table_name] (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255),
+    content TEXT
+);
+```
+6. 作成したテーブルに対して以下の権限を設定
+```sql
+-- テーブルに対するデフォルト権限を設定
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON TABLES TO your_user;
+
+-- シーケンスに対するデフォルト権限を設定
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT USAGE, SELECT ON SEQUENCES TO your_user;
+```
+
+## 環境変数の設定
+- sqlに接続するために必要な設定を以下のコマンドで環境変数に設定する
+  - DB_HOSTのデフォルトは`localhost`
+```bash
+export DB_NAME='your_db_name'
+export DB_USER='your_db_user'
+export DB_PASSWORD='your_db_password'
+export DB_HOST='your_db_host'
+```
+
 # 使用方法
 
 ## アプリの起動
