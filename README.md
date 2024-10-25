@@ -58,7 +58,7 @@ GRANT ALL PRIVILEGES ON DATABASE newdb TO your_user;
 ```
 5. 以下のSQL文でテーブルを新規作成する
 ```sql
-CREATE TABLE [table_name] (
+CREATE TABLE table_name (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     content TEXT
