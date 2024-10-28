@@ -20,7 +20,7 @@ end
 
 def read_notes(conn)
   data = {}
-  result = conn.exec('SELECT * FROM NOTE')
+  result = conn.exec('SELECT * FROM note')
   result.each do |row|
     data[row['id']] = { 'title' => row['title'], 'content' => row['content'] }
   end
@@ -28,15 +28,15 @@ def read_notes(conn)
 end
 
 def create_notes(conn, title, content)
-  conn.exec_params('INSERT INTO NOTE (title, content) VALUES ($1, $2)', [title, content])
+  conn.exec_params('INSERT INTO note (title, content) VALUES ($1, $2)', [title, content])
 end
 
 def update_notes(conn, id, title, content)
-  conn.exec_params('UPDATE NOTE SET title = $1, content = $2 WHERE id = $3', [title, content, id])
+  conn.exec_params('UPDATE note SET title = $1, content = $2 WHERE id = $3', [title, content, id])
 end
 
 def delete_notes(conn, id)
-  conn.exec_params('DELETE FROM NOTE WHERE id = $1', [id])
+  conn.exec_params('DELETE FROM note WHERE id = $1', [id])
 end
 
 get '/' do
