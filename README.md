@@ -56,9 +56,9 @@ GRANT ALL PRIVILEGES ON DATABASE newdb TO your_user;
 ```sql
 \c newdb;
 ```
-5. 以下のSQL文でテーブルを新規作成する
+5. 以下のSQL文でnoteテーブルを新規作成する
 ```sql
-CREATE TABLE table_name (
+CREATE TABLE note (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     content TEXT
@@ -75,6 +75,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT USAGE, SELECT ON SEQUENCES TO yo
 
 ## 環境変数の設定
 - sqlに接続するために必要な設定を以下のコマンドで環境変数に設定する
+  - DB_NAMEは`note`になる
   - DB_HOSTのデフォルトは`localhost`
 ```bash
 export DB_NAME='your_db_name'
