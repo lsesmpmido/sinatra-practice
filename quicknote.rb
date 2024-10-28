@@ -58,7 +58,6 @@ get '/notes/:id' do
   if note
     @title = note['title']
     @content = note['content']
-    puts "GET title: #{@title} #{@title.encoding} content: #{@content} #{@content.encoding}"
     erb :show
   else
     status 404
@@ -69,7 +68,6 @@ end
 post '/notes' do
   title = params[:title]
   content = params[:content]
-  puts "POST title: #{title} #{title.encoding} content: #{content} #{content.encoding}"
   if title && content
     create_notes(conn, title, content)
     redirect '/notes'
@@ -93,7 +91,6 @@ end
 patch '/notes/:id' do
   title = params[:title]
   content = params[:content]
-  puts "PATCH title: #{title} #{title.encoding} content: #{content} #{content.encoding}"
   if title && content
     update_notes(conn, params[:id], title, content)
     redirect "/notes/#{params[:id]}"
