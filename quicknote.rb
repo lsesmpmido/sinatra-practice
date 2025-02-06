@@ -3,8 +3,14 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'json'
+require 'pg'
 
-FILE_PATH = 'data/quicknote.json'
+conn = PG.connect(
+  dbname: ENV['DB_NAME'],
+  user: ENV['DB_USER'],
+  password: ENV['DB_PASSWORD'],
+  host: ENV['DB_HOST'], client_encoding: 'UTF-8'
+)
 
 helpers do
   def h(text)
@@ -12,12 +18,25 @@ helpers do
   end
 end
 
-def load_notes(file_path)
-  File.open(file_path) { |f| JSON.parse(f.read) }
+def read_notes(conn)
+  data = {}
+  result = conn.exec('SELECT * FROM note')
+  result.each do |row|
+    data[row['id']] = { 'title' => row['title'], 'content' => row['content'] }
+  end
+  data
 end
 
-def save_notes(file_path, notes)
-  File.write(file_path, JSON.dump(notes))
+def create_notes(conn, title, content)
+  conn.exec_params('INSERT INTO note (title, content) VALUES ($1, $2)', [title, content])
+end
+
+def update_notes(conn, id, title, content)
+  conn.exec_params('UPDATE note SET title = $1, content = $2 WHERE id = $3', [title, content, id])
+end
+
+def delete_notes(conn, id)
+  conn.exec_params('DELETE FROM note WHERE id = $1', [id])
 end
 
 get '/' do
@@ -25,7 +44,7 @@ get '/' do
 end
 
 get '/notes' do
-  @notes = load_notes(FILE_PATH)
+  @notes = read_notes(conn)
   erb :index
 end
 
@@ -34,7 +53,7 @@ get '/notes/new' do
 end
 
 get '/notes/:id' do
-  notes = load_notes(FILE_PATH)
+  notes = read_notes(conn)
   note = notes[params[:id]]
   if note
     @title = note['title']
@@ -50,10 +69,7 @@ post '/notes' do
   title = params[:title]
   content = params[:content]
   if title && content
-    notes = load_notes(FILE_PATH)
-    id = notes.empty? ? '1' : (notes.keys.map(&:to_i).max + 1).to_s
-    notes[id] = { 'title' => title, 'content' => content }
-    save_notes(FILE_PATH, notes)
+    create_notes(conn, title, content)
     redirect '/notes'
   else
     redirect '/new'
@@ -61,7 +77,7 @@ post '/notes' do
 end
 
 get '/notes/:id/edit' do
-  notes = load_notes(FILE_PATH)
+  notes = read_notes(conn)
   note = notes[params[:id]]
   if note
     @title = note['title']
@@ -76,9 +92,7 @@ patch '/notes/:id' do
   title = params[:title]
   content = params[:content]
   if title && content
-    notes = load_notes(FILE_PATH)
-    notes[params[:id]] = { 'title' => title, 'content' => content }
-    save_notes(FILE_PATH, notes)
+    update_notes(conn, params[:id], title, content)
     redirect "/notes/#{params[:id]}"
   else
     redirect '/notes/:id/edit'
@@ -86,9 +100,7 @@ patch '/notes/:id' do
 end
 
 delete '/notes/:id' do
-  notes = load_notes(FILE_PATH)
-  notes.delete(params[:id])
-  save_notes(FILE_PATH, notes)
+  delete_notes(conn, params[:id])
 
   redirect '/notes'
 end
